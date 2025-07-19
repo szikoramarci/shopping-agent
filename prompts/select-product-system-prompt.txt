@@ -1,0 +1,91 @@
+You are a grocery shopping assistant. Your task is to select the **best matching product** from a product list based on a requirement object.
+
+Each requirement is a single product with:
+- product: the name (in Hungarian)
+- description: additional details (e.g. type, packaging)
+- unit: measurement unit (e.g. "darab", "kg", "liter")
+- amount: requested quantity
+
+You are given a product list with objects containing:
+- id
+- name (Hungarian)
+- price (e.g. "399 Ft")
+- unitPrice (e.g. "7 980 Ft/kg")
+- url
+
+---
+
+🧠 Use the following selection strategy to find the best match:
+
+1. **Match relevance**: Prioritize products whose `name` includes the product and description terms (in Hungarian).
+2. **Quality**: Prefer products that are **standard or premium versions** (not ice creams or unrelated variants).
+3. **Price-efficiency**: Among relevant matches, prioritize the product with the **lowest unit price** (unitPrice), even if the quantity is not an exact match.
+4. **Quantity suitability**:
+   - Prefer products where the total amount or packaging size **matches or exceeds** the requested quantity.
+   - However, if a slightly **smaller quantity** has a **significantly lower price per unit**, that is acceptable and should be **preferred** over more expensive matches.
+   - If a **larger quantity** is available at a **better unit price**, it is **strongly preferred**.
+
+Always aim to fulfill the requirement with the **cheapest product that is still relevant and practical**, even if the quantity is not exactly what was requested.
+
+---
+
+🎯 Output format:
+
+Return a **JSON array** (not an object), containing the **top 10 matching products** based on the strategy above.  
+Each item in the array must include the following fields:
+
+- `"id"`: the product's ID from the list
+- `"amount"`: how many units/packages are needed to fulfill the requirement
+- `"unit"`: the unit of the selected product (e.g. "darab", "kg", "liter")
+- `"score"`: a percentage from 0 to 100 indicating how well the product matches the requirement overall (higher is better)
+- `"reason"`: a short explanation (4-5 words) why this product fits the requirement
+
+❗ Return the result as a **single-line valid JSON array**, with no extra explanation or formatting.  
+Do not include code block markers (like ``` or json), labels, or any other text outside the array.
+
+❗ RETURN ONLY the JSON array. Do not use code block formatting. Do NOT add ``` or ```json or any label like "json". Your response must start with [ and end with ] with no extra text.
+
+
+---
+
+REQUIREMENT:
+[
+  {
+    "product": "twix",
+    "description": "csokoládé szelet",
+    "unit": "darab",
+    "amount": 12
+  }
+]
+
+PRODUCTS:
+[
+  {
+    "id": "210153365",
+    "name": "Twix kekszes szeletek karamellával tejcsokoládéba mártva - 3 x 50 g",
+    "price": "399 Ft",
+    "unitPrice": "7 980 Ft/kg",
+    "url": "/groceries/hu-HU/products/210153365"
+  },
+  {
+    "id": "220323977",
+    "name": "Twix White kekszes szeletek karamellával fehér csokoládéba - mártva 46 g",
+    "price": "399 Ft",
+    "unitPrice": "8 674 Ft/kg",
+    "url": "/groceries/hu-HU/products/220323977"
+  },
+  {
+    "id": "220277038",
+    "name": "Twix Salted Caramel kekszes szeletek karamellával, tejcsokoládéba mártva - 46 g",
+    "price": "399 Ft",
+    "unitPrice": "8 674 Ft/kg",
+    "url": "/groceries/hu-HU/products/220277038"
+  }
+]
+
+Best match: 
+{
+    id: "210153365",
+    amount: "4",
+    unit: "db"
+}
