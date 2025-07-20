@@ -1,17 +1,15 @@
 const { isLoggedIn, login } = require("./lib/auth.js");
 const { launchBrowser } = require("./lib/browser.js");
 const { dialogLoop } = require("./lib/dialog.js");
-const { searchProducts } = require("./lib/tesco.js");
+const { searchProducts } = require("./lib/product.js");
 const { selectPerfectProduct } = require("./lib/agent.js");
-
-const email = "simabeats@gmail.com";
-const password = "m13DPaxnBygEdpM8WhNH";
+require('dotenv').config();
 
 (async () => {
   const page = await launchBrowser();
   const loggedIn = await isLoggedIn(page);
   if (!loggedIn) {
-    await login(page, email, password);
+    await login(page);
   }
 
   await dialogLoop(async (list) => {
