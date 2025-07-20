@@ -34,6 +34,7 @@ export class RequirementComponent {
     this.isRecording = false;
     this.transcript += this.voiceRecognitionService.text;
     this.voiceRecognitionService.text = '';
+    this.sendTranscript();
   }
 
   sendTranscript() {

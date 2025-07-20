@@ -11,7 +11,7 @@ export class RequirementService {
   constructor(private http: HttpClient) {}
 
   submitTextForParsing(text: string): Observable<Requirement[]> {
-    return this.http.post<Requirement[]>(`${API_BASE_URL}/match`, { text });
+    return this.http.post<Requirement[]>(`${API_BASE_URL}/requirement-parsing`, { text });
   }
 
   submitToQueue(requirements: Requirement[]): Observable<any> {

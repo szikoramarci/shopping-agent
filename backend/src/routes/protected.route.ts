@@ -17,7 +17,7 @@ router.post('/queue', (req, res) => {
   res.status(201).send({ message: 'Requirement added to queue' });
 });
 
-router.post('/match', async (req, res) => {
+router.post('/requirement-parsing', async (req, res) => {
   const search: string = req.body.search;
   try {
     //const match = await searchWithAiModel(search, queue);
