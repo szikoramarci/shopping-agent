@@ -1,0 +1,36 @@
+<div class="voice-wrapper">
+  <h2>Beszéddel történő adatbevitel</h2>
+
+  <button
+    class="record-button"
+    (mousedown)="startRecording()"
+    (mouseup)="stopRecording()"
+    (touchstart)="startRecording()"
+    (touchend)="stopRecording()"
+    [disabled]="isRecording || loading"
+  >
+    🎤 Tartsd lenyomva a beszédhez
+  </button>
+
+  <div class="loading" *ngIf="loading">Feldolgozás...</div>
+
+  <p class="transcript" *ngIf="transcript">
+    Felismert szöveg: <strong>{{ transcript }}</strong>
+  </p>
+
+  <div class="requirements" *ngIf="requirements.length">
+    <h3>Felismert igények:</h3>
+    <ul>
+      <li *ngFor="let req of requirements">
+        <strong>{{ req.amount }} {{ req.unit }}</strong> – {{ req.product }} ({{
+          req.description
+        }})
+      </li>
+    </ul>
+
+    <div class="actions">
+      <button class="accept" (click)="accept()">Elfogadás</button>
+      <button class="reject" (click)="reject()">Elutasítás</button>
+    </div>
+  </div>
+</div>

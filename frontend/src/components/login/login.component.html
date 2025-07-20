@@ -1,0 +1,16 @@
+<div class="login-wrapper">
+  <h2>PIN belépés</h2>
+
+  <input
+    autofocus
+    type="password"
+    maxlength="6"
+    [(ngModel)]="pin"
+    placeholder="PIN kód"
+    class="pin-input"
+  />
+
+  <button (click)="login()" class="login-button">Bejelentkezés</button>
+
+  <p *ngIf="error" class="error-message">{{ error }}</p>
+</div>

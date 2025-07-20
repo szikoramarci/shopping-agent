@@ -1,0 +1,67 @@
+.voice-wrapper {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fafafa;
+  font-family: sans-serif;
+}
+
+.record-button {
+  font-size: 1.2rem;
+  padding: 0.8rem 1.2rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.record-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.loading {
+  font-style: italic;
+  color: #555;
+}
+
+.transcript {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.requirements {
+  margin-top: 1.5rem;
+}
+
+.requirements ul {
+  padding-left: 1.2rem;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.accept {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.reject {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
