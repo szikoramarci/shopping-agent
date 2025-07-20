@@ -1,5 +1,5 @@
 {
-  "name": "shopping-app-frontend",
+  "name": "shopping-agent-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
