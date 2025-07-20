@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Requirement } from '../../models/requirement.model';
 import { RequirementService } from '../../services/requirement.service';
 import { CommonModule } from '@angular/common';
+import { VoiceRecognitionService } from '../../services/voice-recognition.service';
 
 @Component({
   standalone: true,
@@ -13,48 +14,26 @@ import { CommonModule } from '@angular/common';
 export class RequirementComponent {
   isRecording = false;
   transcript = '';
-  // recognition: SpeechRecognition | null = null;
   requirements: Requirement[] = [];
   loading = false;
 
-  constructor(private requirementService: RequirementService) {
-    const SpeechRecognition =
-      (window as any).webkitSpeechRecognition ||
-      (window as any).SpeechRecognition;
-    console.log('SpeechRecognition:', SpeechRecognition);
-    /* if (SpeechRecognition) {
-      this.recognition = new SpeechRecognition();
-      this.recognition.lang = 'hu-HU';
-      this.recognition.continuous = false;
-      this.recognition.interimResults = false;
-
-      this.recognition.onresult = (event: SpeechRecognitionEvent) => {
-        const result = event.results[0][0].transcript;
-        this.transcript = result;
-        this.sendTranscript();
-      };
-
-      this.recognition.onerror = (event) => {
-        console.error('Speech recognition error:', event);
-      };
-    } else {
-      console.warn('Speech recognition not supported in this browser.');
-    }*/
+  constructor(
+    public voiceRecognitionService: VoiceRecognitionService,
+    private requirementService: RequirementService
+  ) {
+    this.voiceRecognitionService.init();
   }
 
   startRecording() {
-    /* if (this.recognition) {
-      this.transcript = '';
-      this.recognition.start();
-      this.isRecording = true;
-    }*/
+    this.voiceRecognitionService.start();
+    this.isRecording
   }
 
   stopRecording() {
-    /*   if (this.recognition) {
-      this.recognition.stop();
-      this.isRecording = false;
-    }*/
+    this.voiceRecognitionService.stop();
+    this.isRecording = false;
+    this.transcript += this.voiceRecognitionService.text;
+    this.voiceRecognitionService.text = '';
   }
 
   sendTranscript() {

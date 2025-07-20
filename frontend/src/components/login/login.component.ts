@@ -28,7 +28,7 @@ export class LoginComponent {
       next: (res) => {
         localStorage.setItem('auth_token', res.token);
         this.error = '';
-        this.router.navigateByUrl('/voice');
+        this.router.navigateByUrl('/requirement');
       },
       error: (err) => {
         console.error('Login error', err);
