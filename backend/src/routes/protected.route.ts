@@ -1,4 +1,5 @@
 import express from 'express';
+import { parseShoppingList } from '../services/ai';
 
 const router = express.Router();
 
@@ -20,8 +21,7 @@ router.post('/queue', (req, res) => {
 router.post('/requirement-parsing', async (req, res) => {
   const search: string = req.body.search;
   try {
-    //const match = await searchWithAiModel(search, queue);
-    const match = "TESZT";
+    const match = await parseShoppingList('Tesztelek egy nagyot, hogy megtaláljam a megfelelő terméket: ' + search);
     if (!match) {
       return res.status(404).send({ error: 'No matching requirement found' });
     }
