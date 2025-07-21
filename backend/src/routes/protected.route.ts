@@ -19,14 +19,16 @@ router.post('/queue', (req, res) => {
 });
 
 router.post('/requirement-parsing', async (req, res) => {
-  const search: string = req.body.search;
+  const query: string = req.body.query;
+  console.log(query);
   try {
-    const match = await parseShoppingList('Tesztelek egy nagyot, hogy megtaláljam a megfelelő terméket: ' + search);
+    const match = await parseShoppingList(query);
     if (!match) {
       return res.status(404).send({ error: 'No matching requirement found' });
     }
     res.send(match);
   } catch (error) {
+    console.log(error);
     res.status(500).send({ error: 'AI model matching failed' });
   }
 });

@@ -27,7 +27,7 @@ export async function selectPerfectProduct(requirement: any, products: any[]): P
 }
 
 function loadPrompt(filename: string): string {
-  const fullPath = path.join(__dirname, "..", "prompts", filename);
+  const fullPath = path.join(__dirname, ".", "prompts", filename);
   return fs.readFileSync(fullPath, "utf-8").trim();
 }
 
@@ -48,7 +48,7 @@ async function callOpenRouter(systemPrompt: string, userPrompt: string): Promise
     }),
   });
 
-  const data = await response.json();
+  const data = await response.json();  
   return data.choices[0].message.content;
 }
 

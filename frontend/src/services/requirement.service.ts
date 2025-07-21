@@ -10,8 +10,8 @@ const API_BASE_URL: string = `${environment.backendUrl}/api`
 export class RequirementService {
   constructor(private http: HttpClient) {}
 
-  submitTextForParsing(text: string): Observable<Requirement[]> {
-    return this.http.post<Requirement[]>(`${API_BASE_URL}/requirement-parsing`, { text });
+  submitTextForParsing(query: string): Observable<Requirement[]> {
+    return this.http.post<Requirement[]>(`${API_BASE_URL}/requirement-parsing`, { query });
   }
 
   submitToQueue(requirements: Requirement[]): Observable<any> {
