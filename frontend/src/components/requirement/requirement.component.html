@@ -7,21 +7,21 @@
     (mouseup)="stopRecording()"
     (touchstart)="startRecording()"
     (touchend)="stopRecording()"
-    [disabled]="isRecording || loading"
+    [disabled]="loading()"
   >
     🎤 Tartsd lenyomva a beszédhez
   </button>
 
-  <div class="loading" *ngIf="loading">Feldolgozás...</div>
+  <div class="loading" *ngIf="loading()">Feldolgozás...</div>
 
-  <p class="transcript" *ngIf="transcript">
-    Felismert szöveg: <strong>{{ transcript }}</strong>
+  <p class="transcript" *ngIf="transcript()">
+    Felismert szöveg: <strong>{{ transcript() }}</strong>
   </p>
 
-  <div class="requirements" *ngIf="requirements.length">
+  <div class="requirements" *ngIf="requirements().length > 0">
     <h3>Felismert igények:</h3>
     <ul>
-      <li *ngFor="let req of requirements">
+      <li *ngFor="let req of requirements(); trackBy: trackByProduct">
         <strong>{{ req.amount }} {{ req.unit }}</strong> – {{ req.product }} ({{
           req.description
         }})

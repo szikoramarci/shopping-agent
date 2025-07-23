@@ -1,3 +1,4 @@
+import { inject, Inject, signal } from '@angular/core';
 import { Component } from '@angular/core';
 import { Requirement } from '../../models/requirement.model';
 import { RequirementService } from '../../services/requirement.service';
@@ -12,49 +13,54 @@ import { VoiceRecognitionService } from '../../services/voice-recognition.servic
   styleUrls: ['./requirement.component.css'],
 })
 export class RequirementComponent {
-  isRecording = false;
-  transcript = '';
-  requirements: Requirement[] = [];
-  loading = false;
+  isRecording = signal(false);
+  transcript = signal('');
+  requirements = signal<Requirement[]>([]);
+  loading = signal(false);
 
-  constructor(
-    public voiceRecognitionService: VoiceRecognitionService,
-    private requirementService: RequirementService
-  ) {
+  private voiceRecognitionService = inject(VoiceRecognitionService);
+  private requirementService = inject(RequirementService);
+
+  constructor() {
     this.voiceRecognitionService.init();
   }
 
   startRecording() {
     this.voiceRecognitionService.start();
-    this.isRecording
+    this.isRecording.set(true)
   }
 
   stopRecording() {
     this.voiceRecognitionService.stop();
-    this.isRecording = false;
-    this.transcript += this.voiceRecognitionService.text;
+    this.isRecording.set(false);
+
+    const recognized = this.voiceRecognitionService.text;
+    this.transcript.update((prev) => prev + ' ' + recognized);
     this.voiceRecognitionService.text = '';
+
     this.sendTranscript();
   }
 
   sendTranscript() {
-    if (!this.transcript.trim()) return;
+    if (!this.transcript().trim()) return;
 
-    this.loading = true;
-    this.requirementService.submitTextForParsing(this.transcript).subscribe({
+    this.loading.set(true)
+    this.requirementService.submitTextForParsing(this.transcript()).subscribe({
       next: (res) => {
-        this.requirements = res;
-        this.loading = false;
+        this.requirements.set(res)
       },
       error: (err) => {
-        console.error('Hiba történt a feldolgozás során', err);
-        this.loading = false;
+        console.error('Hiba történt a feldolgozás során', err);        
       },
+      complete: () => {
+        this.transcript.set('')
+        this.loading.set(false)
+      }
     });
   }
 
   accept() {
-    this.requirementService.submitToQueue(this.requirements).subscribe({
+    this.requirementService.submitToQueue(this.requirements()).subscribe({
       next: () => {
         this.reset();
       },
@@ -69,7 +75,10 @@ export class RequirementComponent {
   }
 
   reset() {
-    this.transcript = '';
-    this.requirements = [];
+    this.transcript.set('')
+    this.requirements.set([])
   }
+
+  trackByProduct = (index: number, item: Requirement) => item.product;
+
 }

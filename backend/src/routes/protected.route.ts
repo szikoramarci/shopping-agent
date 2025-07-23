@@ -1,26 +1,19 @@
 import express from 'express';
-import { parseShoppingList } from '../services/ai';
+import { parseShoppingList } from '../services/ai/ai.service';
+import { Requirement } from '../models/requirement.model';
+import { addToQueue } from '../services/queue/queue.service';
 
 const router = express.Router();
 
-export type Requirement = {
-  product: string;
-  description: string;
-  unit: string;
-  amount: number;
-};
-
-const queue: Requirement[] = [];
-
 router.post('/queue', (req, res) => {
-  const requirement: Requirement = req.body;
-  queue.push(requirement);
+  const requirements: Requirement[] = req.body.requirements;
+  console.log(requirements);
+  addToQueue(requirements);
   res.status(201).send({ message: 'Requirement added to queue' });
 });
 
 router.post('/requirement-parsing', async (req, res) => {
-  const query: string = req.body.query;
-  console.log(query);
+  const query: string = req.body.query;  
   try {
     const match = await parseShoppingList(query);
     if (!match) {

@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
-import { Requirement } from '../routes/protected.route';
+import { Requirement } from '../../models/requirement.model';
+import { Product } from '../../models/product.model';
 dotenv.config();
 
 const OPENROUTER_API_KEY = `${process.env.OPENROUTER_API_KEY}`;
@@ -11,14 +12,14 @@ const AI_MODEL = `google/gemini-2.0-flash-001`;
 const SHOPPING_LIST_PROMPT_FILE = "shopping-list-system-prompt.txt";
 const SELECT_PRODUCT_PROMPT_FILE = "select-product-system-prompt.txt";
 
-export async function parseShoppingList(inputText: string): Promise<Requirement> {
+export async function parseShoppingList(inputText: string): Promise<Requirement[]> {
   const systemPrompt = loadPrompt(SHOPPING_LIST_PROMPT_FILE);
   const rawOutput = await callOpenRouter(systemPrompt, inputText);
   console.log("LLM válasz:", rawOutput);
   return cleanLLMJson(rawOutput);
 }
 
-export async function selectPerfectProduct(requirement: any, products: any[]): Promise<any> {
+export async function selectPerfectProduct(requirement: Requirement, products: Product[]): Promise<any> {
   const systemPrompt = loadPrompt(SELECT_PRODUCT_PROMPT_FILE);
   const inputText = `REQUIREMENT: ${JSON.stringify(requirement)}. PRODUCTS: ${JSON.stringify(products)}.`;
   const rawOutput = await callOpenRouter(systemPrompt, inputText);

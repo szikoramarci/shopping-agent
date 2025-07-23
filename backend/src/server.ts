@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.route';
 import protectedRoutes from './routes/protected.route';
-import { requireAuth } from './middlewares/requireAuth';
+import { requireAuth } from './middlewares/requireAuth.middleware';
 
 dotenv.config();
 
