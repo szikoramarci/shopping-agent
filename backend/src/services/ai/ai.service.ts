@@ -3,6 +3,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { Requirement } from '../../models/requirement.model';
 import { Product } from '../../models/product.model';
+import { Recommendation } from '../../models/recommendation.model';
 dotenv.config();
 
 const OPENROUTER_API_KEY = `${process.env.OPENROUTER_API_KEY}`;
@@ -19,7 +20,7 @@ export async function parseShoppingList(inputText: string): Promise<Requirement[
   return cleanLLMJson(rawOutput);
 }
 
-export async function selectPerfectProduct(requirement: Requirement, products: Product[]): Promise<any> {
+export async function generateRecommendations(requirement: Requirement, products: Product[]): Promise<Recommendation[]> {
   const systemPrompt = loadPrompt(SELECT_PRODUCT_PROMPT_FILE);
   const inputText = `REQUIREMENT: ${JSON.stringify(requirement)}. PRODUCTS: ${JSON.stringify(products)}.`;
   const rawOutput = await callOpenRouter(systemPrompt, inputText);

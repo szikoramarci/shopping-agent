@@ -1,5 +1,4 @@
 import { Requirement } from "../../models/requirement.model";
-import { selectPerfectProduct } from "../ai/ai.service";
 import { addToCart } from "../browser/cart.service";
 
 const queue: Requirement[] = [];

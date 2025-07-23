@@ -40,3 +40,19 @@ export async function humanType(page: Page, selector: string, text: string): Pro
     await humanLikeDelay(50, 150);
   }
 }
+
+export async function humanClearInput(page: Page, selector: string, length: number): Promise<void> {
+  await humanClick(page, selector);  
+  await humanLikeDelay(100, 200);
+  const randomNumber = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+  const steps = length + randomNumber;
+  for(let i = 0; i < steps; i++) {    
+    await page.keyboard.press('Backspace');
+    await humanLikeDelay(100, 300);
+  }
+}
+
+export async function humanSubmit(page: Page): Promise<void> {  
+  await humanLikeDelay(100, 200);
+  await page.keyboard.press('Enter');
+}
