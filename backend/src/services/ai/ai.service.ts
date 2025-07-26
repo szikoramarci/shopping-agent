@@ -51,6 +51,7 @@ async function callOpenRouter(systemPrompt: string, userPrompt: string): Promise
   });
 
   const data = await response.json();  
+  console.log("OpenRouter válasz:", data);
   return data.choices[0].message.content;
 }
 

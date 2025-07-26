@@ -41,7 +41,7 @@ export async function processNext() {
 
   try {
     console.log("📦 Feldolgozás megkezdve:", item.requirement);
-    await addToCart(item.requirement);
+    await addToCart(item);
     console.log("✅ Kész:", item.requirement);
     markAsCompleted(item);
   } catch (error: any) {

@@ -1,0 +1,76 @@
+.queue-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: Arial, sans-serif;
+}
+
+#statusSelect {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.queue-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.queue-item {
+  border: 1px solid #ccc;
+  border-left: 4px solid #007bff;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fefefe;
+  transition: box-shadow 0.2s ease;
+}
+
+.queue-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.main-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.description {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #666;
+}
+
+.recommendation {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: #f4f8ff;
+  border-left: 3px solid #007bff;
+  font-size: 0.95rem;
+}
+
+.badge {
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+  color: white;
+}

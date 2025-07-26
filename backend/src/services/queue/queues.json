@@ -1,20 +1,196 @@
 {
   "queue": [],
-  "completedQueue": [],
-  "failedQueue": [
+  "completedQueue": [
     {
-      "id": "bce7bfc4-0e28-4c6d-96b0-403f21c89aab",
+      "id": "fee0d436-5e52-4f92-a93c-b02b7d2518e9",
       "requirement": {
         "product": "tej",
         "description": "tartós",
         "unit": "liter",
         "amount": 10
       },
-      "status": "failed",
-      "retryCount": 2,
-      "createdAt": "2025-07-26T17:43:59.925Z",
-      "updatedAt": "2025-07-26T17:46:15.628Z"
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T18:26:13.492Z",
+      "updatedAt": "2025-07-26T18:26:25.522Z"
     },
+    {
+      "id": "fb25b85a-536e-4288-818e-3b1fef568545",
+      "requirement": {
+        "product": "tej",
+        "description": "tartós",
+        "unit": "liter",
+        "amount": 10
+      },
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T18:26:43.634Z",
+      "updatedAt": "2025-07-26T18:26:54.306Z"
+    },
+    {
+      "id": "5dc59ca9-eab6-47bc-9844-276c9796283b",
+      "requirement": {
+        "product": "tej",
+        "description": "tartós",
+        "unit": "liter",
+        "amount": 10
+      },
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T18:29:31.807Z",
+      "updatedAt": "2025-07-26T18:29:42.621Z",
+      "recommendation": {
+        "id": "220262976",
+        "amount": 10,
+        "unit": "liter",
+        "score": 100,
+        "reason": "Best price, UHT tej"
+      },
+      "product": {
+        "id": "220262976",
+        "name": "Creamfields UHT zsírszegény tej 1,5% 1 l",
+        "price": "297 Ft",
+        "unitPrice": "297 Ft/l",
+        "url": "/groceries/hu-HU/products/220262976"
+      }
+    },
+    {
+      "id": "77f5bbfc-926c-4c69-8b44-272e523a3e91",
+      "requirement": {
+        "product": "liszt",
+        "description": "fehér",
+        "unit": "kg",
+        "amount": 5
+      },
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T19:23:48.274Z",
+      "updatedAt": "2025-07-26T19:24:02.602Z",
+      "recommendation": {
+        "id": "203208140",
+        "amount": 3,
+        "unit": "kg",
+        "score": 95,
+        "reason": "Liszt, legjobb ár/érték arány"
+      },
+      "product": {
+        "id": "203208140",
+        "name": "Nagyi titka búzafinomliszt BL 55 2 kg",
+        "price": "584 Ft",
+        "unitPrice": "292 Ft/kg",
+        "url": "/groceries/hu-HU/products/203208140"
+      }
+    },
+    {
+      "id": "99d327e0-a525-4385-ac39-3cfec09fe3c5",
+      "requirement": {
+        "product": "olaj",
+        "description": "napraforgó",
+        "unit": "l",
+        "amount": 5
+      },
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T19:23:48.275Z",
+      "updatedAt": "2025-07-26T19:24:15.413Z",
+      "recommendation": {
+        "id": "208624402",
+        "amount": 1,
+        "unit": "l",
+        "score": 100,
+        "reason": "Exact match, best price"
+      },
+      "product": {
+        "id": "208624402",
+        "name": "Tesco finomított napraforgó-étolaj 5 l",
+        "price": "3 695 Ft",
+        "unitPrice": "739 Ft/l",
+        "url": "/groceries/hu-HU/products/208624402"
+      }
+    },
+    {
+      "id": "dc756372-e2cc-45d3-868a-3eb5a4891e9b",
+      "requirement": {
+        "product": "barnacukor",
+        "description": "barnacukor",
+        "unit": "kg",
+        "amount": 2
+      },
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T19:23:48.275Z",
+      "updatedAt": "2025-07-26T19:24:26.039Z",
+      "recommendation": {
+        "id": "105254018",
+        "amount": 2,
+        "unit": "kg",
+        "score": 95,
+        "reason": "Exact match, good price"
+      },
+      "product": {
+        "id": "105254018",
+        "name": "Sweet Family finomítatlan nádcukor 1 kg",
+        "price": "1 049 Ft",
+        "unitPrice": "1 049 Ft/kg",
+        "url": "/groceries/hu-HU/products/105254018"
+      }
+    },
+    {
+      "id": "82ece31f-d393-44b4-a2ed-52f220c00550",
+      "requirement": {
+        "product": "coca cola",
+        "description": "kisebb kiszerelés preferáltabb",
+        "unit": "l",
+        "amount": 5
+      },
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T19:30:52.885Z",
+      "updatedAt": "2025-07-26T19:31:02.103Z",
+      "recommendation": {
+        "id": "121218279",
+        "amount": 2,
+        "unit": "db",
+        "score": 95,
+        "reason": "Good price, fulfills requirement"
+      },
+      "product": {
+        "id": "121218279",
+        "name": "Coca-Cola colaízű szénsavas üdítőital 2 x 1,75 l",
+        "price": "1 379 Ft",
+        "unitPrice": "394 Ft/l",
+        "url": "/groceries/hu-HU/products/121218279"
+      }
+    },
+    {
+      "id": "521ea0f7-26b8-438b-a381-edb09e37c8f8",
+      "requirement": {
+        "product": "fanta",
+        "description": "500 ml kiszerelés",
+        "unit": "db",
+        "amount": 5
+      },
+      "status": "completed",
+      "retryCount": 0,
+      "createdAt": "2025-07-26T19:32:32.564Z",
+      "updatedAt": "2025-07-26T19:32:40.884Z",
+      "recommendation": {
+        "id": "121216875",
+        "amount": 5,
+        "unit": "db",
+        "score": 100,
+        "reason": "Exact match, correct quantity"
+      },
+      "product": {
+        "id": "121216875",
+        "name": "Fanta szénsavas narancsízű üdítőital 500 ml",
+        "price": "399 Ft",
+        "unitPrice": "798 Ft/l",
+        "url": "/groceries/hu-HU/products/121216875"
+      }
+    }
+  ],
+  "failedQueue": [
     {
       "id": "0c28c616-eeec-4cb1-acc3-c71dff30a33c",
       "requirement": {
@@ -40,6 +216,71 @@
       "retryCount": 2,
       "createdAt": "2025-07-26T17:46:56.065Z",
       "updatedAt": "2025-07-26T17:51:25.455Z"
+    },
+    {
+      "id": "21c0a02e-fa59-486a-a266-0fccdfb0fdbc",
+      "requirement": {
+        "product": "tej",
+        "description": "tartós",
+        "unit": "liter",
+        "amount": 10
+      },
+      "status": "failed",
+      "retryCount": 2,
+      "createdAt": "2025-07-26T18:13:46.624Z",
+      "updatedAt": "2025-07-26T18:14:44.943Z"
+    },
+    {
+      "id": "08faf489-958f-4732-bd74-5715e73e6e32",
+      "requirement": {
+        "product": "tej",
+        "description": "tartós",
+        "unit": "liter",
+        "amount": 10
+      },
+      "status": "failed",
+      "retryCount": 2,
+      "createdAt": "2025-07-26T18:18:04.751Z",
+      "updatedAt": "2025-07-26T18:19:42.368Z"
+    },
+    {
+      "id": "bce7bfc4-0e28-4c6d-96b0-403f21c89aab",
+      "requirement": {
+        "product": "tej",
+        "description": "tartós",
+        "unit": "liter",
+        "amount": 10
+      },
+      "status": "failed",
+      "retryCount": 2,
+      "createdAt": "2025-07-26T17:43:59.925Z",
+      "updatedAt": "2025-07-26T18:22:30.127Z"
+    },
+    {
+      "id": "9e048ed3-a86a-4b16-88ae-3afc81c6c683",
+      "requirement": {
+        "product": "tej",
+        "description": "tartós",
+        "unit": "liter",
+        "amount": 10
+      },
+      "status": "failed",
+      "retryCount": 2,
+      "createdAt": "2025-07-26T18:23:00.525Z",
+      "updatedAt": "2025-07-26T18:23:24.898Z"
+    },
+    {
+      "id": "0047dcfc-92dd-47e2-819e-dcbd27448c31",
+      "requirement": {
+        "product": "tej",
+        "description": "tartós",
+        "unit": "liter",
+        "amount": 10
+      },
+      "status": "failed",
+      "retryCount": 2,
+      "createdAt": "2025-07-26T18:24:15.877Z",
+      "updatedAt": "2025-07-26T18:24:39.693Z"
     }
   ]
 }

@@ -1,0 +1,28 @@
+<div class="queue-container">
+  <label for="statusSelect">Státusz szűrő:</label>
+  <select id="statusSelect" [(ngModel)]="selectedStatus" (change)="onStatusChange(selectedStatus)">
+    <option value="pending">Pending</option>
+    <option value="completed">Completed</option>
+    <option value="failed">Failed</option>
+  </select>
+
+  <ul class="queue-list">
+    <li *ngFor="let item of queue" class="queue-item">
+      <div class="main-line">
+        <strong>{{ item.requirement.amount }} {{ item.requirement.unit }} {{ item.requirement.product }}</strong>
+        <span *ngIf="item.status === 'pending'" class="badge badge-warning">Feldolgozásra vár</span>
+        <span *ngIf="item.status === 'completed'" class="badge badge-success">Kész</span>
+        <span *ngIf="item.status === 'failed'" class="badge badge-danger">Hiba</span>
+      </div>
+      <div class="description">{{ item.requirement.description }}</div>
+
+      <div *ngIf="item.recommendation && item.product" class="recommendation">
+        <strong>Ajánlott termék:</strong>
+        <a target="_blank" [href]="item.product.url">{{ item.product.name }} ({{ item.product.unitPrice }})</a><br>
+        <span>Mennyiség: {{ item.recommendation.amount }} egység</span><br>
+        <span>Ok: {{ item.recommendation.reason }}</span><br>
+        <span>Egyezés: {{ item.recommendation.score }}%</span>
+      </div>
+    </li>
+  </ul>
+</div>

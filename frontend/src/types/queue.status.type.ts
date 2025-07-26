@@ -1,0 +1,1 @@
+export type QueueStatus = 'pending' | 'completed' | 'failed';
